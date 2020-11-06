@@ -53,7 +53,7 @@ git-tree-diff -f X -r Y
 ```
 
 ### Formatting the tree
-Example: apply 16 spaces in each depth level
+#### Example: apply 2 spaces in each depth level
 ```
 git-tree-diff -b master -n 2
 ```
