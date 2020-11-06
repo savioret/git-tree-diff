@@ -38,14 +38,14 @@ The `--from` must be used in cunjunction with `--branch`, and it defaults to `HE
 Note that showing differences between branches is a little tricky as the script will try to find out the *oldest* common ancestor of both branches.
 
 
-#### Example: Show changes between curren branch and `master`
+#### Example: Show branch changes between curren branch and `master`
 ```
-git-tree-diff --branch dev
+git-tree-diff --branch master
 ```
 
-#### Example: Show changes between curren branch and `master` taking C as head
+#### Example: Show branch changes between the changeset C and `master`
 ```
-git-tree-diff --branch dev --from C
+git-tree-diff --branch master --from C
 ```
 
 #### Example: Show changes between HEAD and revision X
