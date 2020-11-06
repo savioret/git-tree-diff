@@ -156,7 +156,7 @@ def main():
     parser.add_argument('-n', '--nspaces', metavar='num', help = 'Number of spaces in each depth level', type=int, default=4)
     group1 = parser.add_argument_group('Ancestor mode', 'Show modified files in the current branch')
     group1.add_argument('-b', '--branch', help='Base branch or revision, must be an ancestor of <from>. It finds the oldest common ancestor between the branch and the HEAD of current branch')
-    group1.add_argument('-f', '--from', metavar='rev', dest='revfrom', help='Revision from which to obtain the changes. If not provided, uses the HEAD of the current branch.', default='HEAD')
+    group1.add_argument('-f', '--from', metavar='rev', dest='revfrom', help='Revision from which to obtain the changes. If not provided, uses the HEAD of the current branch. Must be used in conjunction with --branch', default='HEAD')
     group2 = parser.add_argument_group('Revision diff', 'Show modified files between two arbitrary revisions')
     group2.add_argument('-r', '--rev', metavar='rev', nargs='+', help='Revisions to compare with. If only one revision is specified then that revision is compared to the working directory, and, when no revisions are specified, the working directory files are compared to its first parent')
 

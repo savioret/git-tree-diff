@@ -11,8 +11,7 @@ Python command line script to show a tree-form view of modified files in a branc
 git-tree-diff.py [-h] [-s] [-u] [-n num] [-b BRANCH] [-f rev] [-r rev [rev ...]]
 ```
 
-
-```bash
+```
 optional arguments:
   -h, --help            show this help message and exit
   -s, --status          Include file status occured in the diff
@@ -25,7 +24,7 @@ Ancestor mode:
 
   -b BRANCH, --branch BRANCH
                         Base branch or revision, must be an ancestor of <from>. It finds the oldest common ancestor between the branch and the HEAD of current branch
-  -f rev, --from rev    Revision from which to obtain the changes. If not provided, uses the HEAD of the current branch.
+  -f rev, --from rev    Revision from which to obtain the changes. If not provided, uses the HEAD of the current branch. Must be used in conjunction with --branch
 
 Revision diff:
   Show modified files between two arbitrary revisions
@@ -34,22 +33,29 @@ Revision diff:
                         Revisions to compare with. If only one revision is specified then that revision is compared to the working directory, and, when no revisions are specified, the working directory files are compared to its first parent
 ```
 
+The script works in two different modes. Using `--branch` or `--from` shows diff between branches, whilst `--rev` allows to just diff revisions.
+The `--from` must be used in cunjunction with `--branch`, and it defaults to `HEAD`
+Note that showing differences between branches is a little tricky as the script will try to find out the *oldest* common ancestor of both branches.
+
+
 #### Example: Show changes between curren branch and `master`
 ```
-git-tree-diff -b dev
+git-tree-diff --branch dev
 ```
 
-Note that showing differences between branches is a little tricky as the script will try to find out the common ancestor of both branches. If the two branches have already been merged at any moment, that common changeset will be taken as the first one for the diff.
-
+#### Example: Show changes between curren branch and `master` taking C as head
+```
+git-tree-diff --branch dev --from C
+```
 
 #### Example: Show changes between HEAD and revision X
 ```
-git-tree-diff -r X
+git-tree-diff --rev X
 ```
 
-#### Example: Show changes between HEAD and revision X and Y
+#### Example: Show changes between revision X and Y
 ```
-git-tree-diff -f X -r Y
+git-tree-diff -r X -r Y
 ```
 
 ### Formatting the tree
@@ -92,5 +98,5 @@ app/
     └─Response.py[M]
  ```
 
- The status tags appearing at after the file names are provided by the `--name-status` option of `git`
+The status tags appearing at after the file names are provided by the `--name-status` option of `git`
 More info in the [git diff documentation page](https://git-scm.com/docs/git-diff#Documentation/git-diff.txt---diff-filterACDMRTUXB82308203)
