@@ -33,7 +33,7 @@ Revision diff:
                         Revisions to compare with. If only one revision is specified then that revision is compared to the working directory, and, when no revisions are specified, the working directory files are compared to its first parent
 ```
 
-The script works in two different modes. Using `--branch` or `--from` shows diff between branches (using the oldest common ancestor approach), whilst `--rev` allows to just diff revisions or tags.
+The script works in two different modes. Using `--branch` or `--from` shows diff between branches (using the oldest common ancestor approach), whilst `--rev` allows to just diff revisions or tags and should not be combined with `--branch` nor `--from`.
 The `--from` must be used in cunjunction with `--branch`, and it defaults to `HEAD`
 Note that showing differences between branches is a little tricky as the script will try to find out the *oldest* common ancestor of both branches.
 
